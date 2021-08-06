@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-08-04 18:35:36
- * @LastEditTime: 2021-08-05 17:32:49
+ * @LastEditTime: 2021-08-06 09:49:43
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \v3-ts\src\store\index.ts
@@ -22,7 +22,7 @@ export const store = createStore<State>({
   },
   getters: {
     // 是否在购物车中已存在
-    isInCart(state) {
+    isInCart (state) {
       return (data: Product) => {
         return state.shoppingCart.findIndex((item) => item.id === data.id) > -1 ? true : false
       }
@@ -30,11 +30,11 @@ export const store = createStore<State>({
   },
   mutations: {
     // 添加购物车
-    ADD_TO_CARD(state, data) {
+    ADD_TO_CARD (state, data) {
       state.shoppingCart.push(data)
     },
     // 更新购物车数量
-    CHANGE_COUNT(state, { type, data }) {
+    CHANGE_COUNT (state, { type, data }) {
       return state.shoppingCart.map((item) => {
         if (data.id === item.id) {
           item.count += type === 'add' ? 1 : -1
@@ -43,7 +43,7 @@ export const store = createStore<State>({
       })
     },
     // 删除购物车
-    REMOVE_BY_ID(state, id) {
+    REMOVE_BY_ID (state, id) {
       state.shoppingCart = state.shoppingCart.filter((item) => item.id !== id)
     }
   }

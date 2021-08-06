@@ -1,12 +1,13 @@
 /*
  * @Author: your name
  * @Date: 2021-08-05 16:39:00
- * @LastEditTime: 2021-08-05 18:57:38
+ * @LastEditTime: 2021-08-06 15:23:08
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \v3-ts\src\pages\demo\index.tsx
  */
-import { defineComponent, computed, getCurrentInstance, Fragment  } from 'vue'
+import { defineComponent, computed, getCurrentInstance, Fragment, watch  } from 'vue'
+import { useRoute, useRouter } from 'vue-router'
 import { useStore } from '@/store/index.ts'
 import { Product } from '@/interface/index.ts'
 
@@ -17,8 +18,16 @@ export default defineComponent({
      //  拿到当前组件 this(ctx)
     const { ctx } = getCurrentInstance()
     const { state, commit } = useStore()
+    const route = useRoute()
+    const router = useRouter()
     const shoppingCart = computed(() => {
       return state.shoppingCart
+    })
+    watch(() => shoppingCart.value, (newValue, oldValue) => {
+      console.log('newValue', newValue)
+      console.log('oldValue', oldValue)
+    }, {
+      deep: true
     })
     const changeShopCount = (type: string, data: Product) => {
       if (type === 'reduce' && data.count <= 1) return
@@ -27,10 +36,16 @@ export default defineComponent({
     const removeCart = (data: Product) => {
       commit('REMOVE_BY_ID', data.id)
     }
+    const handleJump = () => {
+      console.log('route', route)
+      console.log('router', router)
+      router.push('/')
+    }
     return {
       shoppingCart,
       changeShopCount,
-      removeCart
+      removeCart,
+      handleJump
     }
   },
   methods: {
@@ -40,9 +55,9 @@ export default defineComponent({
   },
   // render函数在**响应式数据发生更改**时会自动触发（与react类似）
   render () {
-    const { shoppingCart, changeShopCount, removeData } = this
+    const { shoppingCart, changeShopCount, removeData, handleJump } = this
     return (<div>
-      <h2>Demo购物车</h2>
+      <h2 onClick={() => handleJump()}>Demo购物车</h2>
       <div class="shop-wrapper">
         {
           shoppingCart.map((item: Product) => {
