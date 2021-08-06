@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-08-06 09:50:56
- * @LastEditTime: 2021-08-06 09:53:52
+ * @LastEditTime: 2021-08-06 16:46:27
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \v3-ts\src\router\routes.ts
@@ -23,10 +23,15 @@ const routes: Array<RouteRecordRaw> = [
     )
   },
   {
+    path: '/swiper-demo',
+    name: 'swiperDemo',
+    component: defineAsyncComponent(() => import('@/pages/swiper/demo'))
+  },
+  {
     path: '/shoppingCart',
     name: 'shoppingCart',
     // component: () => import('@/pages/ShoppingCart/index.vue')
-    component: defineAsyncComponent(() => import('@/pages/ShoppingCart/index.tsx'))
+    component: defineAsyncComponent(() => import('@/pages/shoppingCart/index'))
   }
 ]
 // 路由守卫和之前的实现方式一致 此处只是做了一个demo仅供演示

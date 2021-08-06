@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-08-05 16:39:00
- * @LastEditTime: 2021-08-06 15:23:08
+ * @LastEditTime: 2021-08-06 16:28:42
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \v3-ts\src\pages\demo\index.tsx
@@ -14,7 +14,7 @@ import { Product } from '@/interface/index.ts'
 export default defineComponent({
   props: {},
   components: {},
-  setup(props) {
+  setup (props) {
      //  拿到当前组件 this(ctx)
     const { ctx } = getCurrentInstance()
     const { state, commit } = useStore()

@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-08-04 16:17:57
- * @LastEditTime: 2021-08-05 15:29:26
+ * @LastEditTime: 2021-08-06 16:43:05
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \v3-ts\src\components\NavBar.vue
@@ -14,6 +14,9 @@
     <router-link to="/shoppingCart" :class="{ active: active === 'shoppingCart' }">
       购物车
       ({{ count }})
+    </router-link>
+    <router-link to="/swiper-demo" :class="{ active: active === 'swiperDemo' }">
+      轮播图
     </router-link>
   </div>
 </template>
@@ -32,6 +35,8 @@ export default defineComponent({
 <style lang="less" scoped>
 .active {
   color: #fff;
+  border-radius: 3px;
+  padding: 5px;
   background-color: #f40;
 }
 a {
@@ -41,7 +46,7 @@ a {
 
 .nav-bar {
   display: inline-block;
-  padding: 10px 0;
+  padding: 10px;
   background-color: #ff9800;
 }
 </style>
